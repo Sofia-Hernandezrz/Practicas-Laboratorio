@@ -1,0 +1,44 @@
+#!/bin/bash
+file=$(find /home -name msg.txt)
+sep=$(md5sum $file)
+IFS=' '
+read -a mdsep <<< "$sep"
+if [ "40744679dff4bf36705c00f9cb815579" == $mdsep ];then
+	echo "Archivo Correcta"
+	cat $file | base64 msg.txt > msg1.txt
+else
+	echo "Archivo Incorrecto"
+fi
+
+file1=$(find /home -name fcfm.png)
+sep=$(md5sum $file1)
+IFS1=' '
+read -a mdsep1 <<< "$sep"
+if [ "4260808329804b5f553cf3e3d5a446c6" == $mdsep1 ];then
+	echo "Archivo Correcto"
+	cat $file1 | base64 fcfm.png > fcfm.png
+else
+	echo "Archivo Incorrecto"
+fi
+
+file2=$(find /home -name mystery_img1.txt)
+sep=$(md5sum $file2)
+IFS2=' '
+read -a mdsep2 <<< "$sep"
+if [ "5db9862819edb16f9ac0f3b1c406e79d" == $mdsep2 ];then
+	echo "Imagen Correcta"
+	cat $file2 | base64 --decode mystery_img1.txt > mystery_img1_img.png
+else
+	echo "Archivo Incorrecto"
+fi
+
+file3=$(find /home -name mystery_img2.txt)
+sep=$(md5sum $file3)
+IFS3=' '
+read -a mdsep3 <<< "$sep"
+if [ "b091a841da98ca516635f4dfea1dbaf5" == $mdsep3 ];then
+	echo "Imagen Correcta"
+	cat $file3 | base64 --decode mystery_img2.txt > mystery_img2_img.png
+else
+	echo "Archivo Incorrecto"
+fi
