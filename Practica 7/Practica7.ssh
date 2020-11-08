@@ -1,0 +1,8 @@
+#!/bin/bash
+#red privada
+nmap 197.168.8.*
+#vulnerabilidad
+nmap --script=vuln scanme.nmap.org
+#ip publica 
+nmap 187.195.214.147
+
