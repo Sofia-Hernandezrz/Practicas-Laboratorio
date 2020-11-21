@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import smtplib
+import json
+import argparse
+parser= argparse.ArgumentParser()
+    #Modos:
+parser.add_argument("-arch", help="Archivo txt", required= True)
+parser.add_argument("-mensaje", help="Mensaje", required= True)
+params= parser.parse_args()
+archivo=params.arch
+frase=params.mensaje
+
+msg = MIMEMultipart()
+message = frase
+
+msg['From'] = "sofia@gmail"
+
+archivo=open(archivo, "r")
+lista=archivo.readlines()
+numln = 0
+for linea in lista:
+	numln+=1
+	print(numln, linea)
+	msg['To']=linea
+	msg['Subject']="Holaa"
+
+	msg.attach(MIMEText(message, 'plain'))
+#create server
+	server = smtplib.SMTP('smtp.office365.com:587')
+
+	server.starttls()
+
+# Login Credentials for sending the mail
+	server.login('sofia@gmail' ,'****')
+
+# send the message via the server.
+	server.sendmail(msg['From'], msg['To'], msg.as_string())
+
+	server.quit()
+	print("successfully sent email to %s:" % (msg['To']))
+	#numln+=1
+archivo.close()
+
