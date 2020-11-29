@@ -1,0 +1,8 @@
+En esta practica sinceramente no entiendo 
+mucho del contenido que viene ahí pero de 
+algo que me di cuenta es que vienen archivos 
+que se supone ya había borrado e incluso 
+del dueño anterior, supongo que por alguna 
+razon siguen ocupando espacio en la memoria
+Tambien muestra datos de aplicaciones que
+ya había desinstalado hace tiempo.
